@@ -1,0 +1,2 @@
+이번에는 exclusive 모드 사용입니다
+hello
