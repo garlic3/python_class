@@ -1,0 +1,173 @@
+
+
+day03 멜론, 벅스, 지니 뮤직 크롤링
+
+맥북 ② 파일 경로 복사 : Command + Option + C
+1. 과제 해설
+2. 파일 복습
+2. 벅스 크롤링(쿼리스트링 사용)
+3. 멜론 크롤링(header)
+4. 셀레니움 설명
+5. 지니 크롤링
+6. robots.txt
+
+
+중첩 요소(형제)	
+		next_siblings
+		본인을 제외한 다음 형제들
+		next_sibling
+		본인을 제외한 다음 형제 하나
+
+		previous_siblings
+		본인을 제외한 이전 형제들
+		previous_sibling
+		본인을 제외한 이전 형제 하나
+
+
+CSS 선택자(selector) 활용
+
+	1.자식 선택자, 하위 선택자
+		자식 선택자 
+		바로 아래의 있는 자식 태그를 찾을 때 
+		ex) div > p 
+		div태그 바로 아래에 있는 p태그
+
+
+		하위 선택자
+		하위(자손) 태그를 찾을 때 
+		ex) div p 
+		div태그 아래에 있는 p태그	
+
+	
+	3. 속성
+
+		태그명#아이디명 해당 태그중에 해당 아이디명으로 찾기
+		태그명.클래스명 해당 태그중에 해당 클래스명으로 찾기 
+		태그명[속성명] 해당 태그중에 해당 속성을 가진 태그 찾기
+		태그명[속성명="속성값"]해당 속성값을 가진 태그 찾기
+	
+	4. 활용 메소드
+
+		select()
+			지정한 태그들을 모두 가져와서 리스트에 보관
+			태그: soup.select('태그명')
+			태그내용: soup.select('태그명')[0].text
+			속성값: soup.select('태그명.클래스명')
+
+		select_one()
+			지정된 태그들 중에서 가장 첫번째 태그만 가져오기
+			태그: soup.select_one('태그명')
+			태그내용: soup.select_one('태그명').text
+			속성값: soup.select_one('태그명.클래스명')
+			       soup.select_one('태그명#아이디명')
+
+
+문자열 메소드
+	count()
+	해당 문자열에서 특정 문자열의 개수를 반환
+	문자열.count('특정문자열')
+
+	find()
+	해당 문자열에서 특정 문자열의 인덱스를 반환
+	문자열.find('특정문자열')
+	* 찾는 문자열이 없는 경우 -1을 반환
+
+	upper()
+	대문자로 변환한 문자열 반환
+	문자열.upper()
+
+	lower()
+	소문자로 변환한 문자열 반환
+	문자열.lower()
+
+	capitalize()
+	첫글자는 대문자로 나머지는 소문자로 변환한 문자열 반환
+	문자열.capitalize()
+	
+	join()
+	인수로 전달한 반복가능객체의 각 요소 사이에 문자열을 포함시켜 새로운 문자열을 반환
+	문자열.join(반복가능객체)
+
+	split()
+	하나의 문자열을 여러개의 문자열로 분리해서 저장한 리스트 반환
+	분리 기준 지정 가능
+	문자열.split('기준 문자열')
+	
+	replace()
+	문자열의 일부 문자열을 다른 문자열로 바꾼 결과를 반환
+	문자열.replace('바꿀 문자열', '새로운 문자열')
+	
+	strip()
+	양쪽 끝에 있는 불필요한 문자열을 제거한 문자열 반환
+	제거할 문자열 지정 가능
+	문자열.strip('제거할 문자열')
+
+
+
+쿼리스트링
+URL 상에 데이터를 담아 서버에 전달하는 방식
+	requests.get(url, params = {"key1":"value1", "key2":"value2"})
+
+
+파일 복습
+	1. with문
+		with문이 끝날 때 close() 메소드 호출
+		with open(파일명, 모드) as 파일객체:
+			파일 처리 코드
+		
+		ex) with open('test.csv', 'w', newline='')as file:
+	
+	2. newline 옵션
+		csv 파일 작성시 줄바꿈이 자동으로 추가되는것을 방지
+
+	3. quotechar 옵션
+		delimiter 옵션으로 분리되면 안되는 데이터를 묶어주는 문자를 지정
+
+	4. delimiter
+		구분 문자
+	
+		리스트 = [[1행], [2행], [3행]... [n행]]	
+
+User-Agent
+	사용자 소프트웨어의 식별 정보 
+	https://www.useragentstring.com/
+
+
+셀레니움(Selenium)
+	웹 애플리케이션 자동화 및 테스트를 위한 프레임워크
+	동적 페이지를 크롤링 하기 위해 많이 사용함
+	from selenium import webdriver
+	from webdriver_manager.chrome import ChromeDriverManager
+
+
+
+robots.txt
+	검색 엔진 또는 검색 크롤러가 사이트 및 웹페이지를 수집할 수 있도록 허용하거나 제한하는 권고안
+	https://namu.wiki/w/robots.txt
+	https://www.google.com/robots.txt
+	http://naver.com/robots.txt
+
+
+	특정 경로의 접근을 허용
+	Allow: /naver.com/test
+
+	특정 경로의 접근 차단
+	Disallow: /naver.com/test2
+
+	모든 경로 접근 허용
+	Allow: /
+
+	모든 경로 접근 차단
+	Disallow: /
+
+	첫 페이지만 접근 허용, 나머지는 접근 차단
+	Disallow: /
+	Allow : /$
+
+	$ 홈 디렉토리
+
+
+.string 과 .text의 차이
+<td>sometext<p>sometext</p></td>
+
+
