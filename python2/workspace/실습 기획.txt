@@ -1,0 +1,26 @@
+1. 크롤링 해서 리스트로 만들어주는 메소드
+4. 크롤링을 반복 작업 시키는 메소드
+2. 상위 5개를 얻어내는 메소드
+3. 그래프를 그려주는 메소드(bar 그래프)
+4. 그래프를 그려주는 메소드(pie 그래프)
+5. 그래프 그린 이미지를 메일로 발송하는 메소드
+
+
+메인메소드 잡아주기    
+if __name__ == '__main__':
+    print('Good')
+    main()
+
+주피터 노트북 py 파일로 변경
+!jupyter nbconvert --to script day10.ipynb
+
+pyinstaller 설치
+conda install pyinstaller
+pip install pyinstaller
+
+파일로 바꾸기
+pyinstaller --onefile day10.py
+
+
+이메일 발송 IMAP 액세스 허용 설정
+
